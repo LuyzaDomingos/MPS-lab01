@@ -11,6 +11,8 @@ package view;
  */
 public class Main {
     public static void main(String[] args) {
-        
+        var a = new business.control.UserControl();
+        a.addUser("Maconha", "Maconha123");
+        System.out.println(a.getUser("Maconha").getPassword());
     }
 }
