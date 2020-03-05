@@ -6,9 +6,13 @@
 package business.control;
 
 /**
- *
- * @author aluno
+ * Gerencia os Usuários
+ * @author Victor Koehler
  */
 public interface UserControlInterface {
-    
+    void addUser(String login, String senha);
+
+    void deleteUser(String login);
+
+    business.model.UserInterface getUser(String login);
 }
