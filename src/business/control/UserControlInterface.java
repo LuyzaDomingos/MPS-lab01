@@ -10,7 +10,7 @@ package business.control;
  * @author Victor Koehler
  */
 public interface UserControlInterface {
-    void addUser(String login, String senha);
+    void addUser(String login, String password);
 
     void deleteUser(String login);
 
