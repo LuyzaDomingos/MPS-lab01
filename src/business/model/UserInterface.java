@@ -6,9 +6,13 @@
 package business.model;
 
 /**
- *
- * @author aluno
+ * Representa Usuários
+ * @author Victor Koehler
  */
 public interface UserInterface {
-    
+    String getLogin();
+
+    String getPassword();
+
+    void setPassword(String newPassword);
 }
