@@ -1,16 +1,32 @@
 package infra;
 
 import business.model.*;
-import java.io.*;
-import java.util.*;
-import util.InfraException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.HashMap;
+import java.util.Map;
+import java.io.Serializable;
 
-public class UserPersistence implements UserPersistenceInterface, Serializable {
 
-    private static FileOutputStream writeUser;
+/**
+ *
+ * @author Luyza
+ */
+
+public class UserPersistence implements UserPersistenceInterface,Serializable{
+
+   
     private static FileInputStream readUser;
+    private static FileOutputStream writeUser;
+    
     private static ObjectInputStream readObj;
     private static ObjectOutputStream writeObj;
+    
+    private File file;
 
     public UserPersistence(String name) {
         file = new File(name);
@@ -25,10 +41,9 @@ public class UserPersistence implements UserPersistenceInterface, Serializable {
             readUser.close();
             readObj.close();
             return users;
-        }catch(){
-
-        }catch(){
-
+            
+        }catch(IOException ex){
+            throw new InfraException("Não foi possível carregar o usuário!");
         }
     }
 
@@ -37,16 +52,17 @@ public class UserPersistence implements UserPersistenceInterface, Serializable {
 
         try{
         
-            writeUser = new FileInputStream(file);
-            writeObj = ObjectOutputStream(writeUser);
+            writeUser = new FileOutputStream(file);
+            writeObj = ObjectOutputStream(writeUser); //##
             writeObj.writeObject(users);
             writeUser.close();
             writeObj.close();
-        }catch(){
-
-        }catch(){
-
+            
+        }catch(IOException ex){
+            throw new InfraException("Não foi possível salvar o cadastro!");
         }
     }
+
+   
 
 }
