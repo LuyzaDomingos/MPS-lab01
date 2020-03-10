@@ -10,7 +10,7 @@ package business.control;
  * @author Victor Koehler
  */
 public interface UserControlInterface {
-    void addUser(String login, String password);
+    void addUser(String login, String password) throws util.InvalidLoginException, util.InvalidPasswordException;
 
     void deleteUser(String login);
 

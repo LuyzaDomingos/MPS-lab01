@@ -5,13 +5,16 @@
  */
 package business.control;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 import business.model.User;
 import business.model.UserInterface;
+import util.InvalidLoginException;
+import util.InvalidPasswordException;
 
 /**
  * Gerencia os Usuários
+ * 
  * @author Victor Koehler
  */
 public class UserControl implements UserControlInterface {
@@ -21,7 +24,9 @@ public class UserControl implements UserControlInterface {
         this.users = new HashMap<>();
     }
 
-    public void addUser(String login, String password) {
+    public void addUser(String login, String password) throws InvalidLoginException, InvalidPasswordException {
+        UserInputValidator.validateLogin(login);
+        UserInputValidator.validatePassword(password);
         User u = new User(login, password);
         users.put(login, u);
     }
