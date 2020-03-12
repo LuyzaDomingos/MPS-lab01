@@ -28,10 +28,9 @@ public class UserControl implements UserControlInterface {
         this.users = persistence.loadUser();
     }
 
-    public void addUser(String login, String password)
-            throws InvalidLoginException, InvalidPasswordException, InfraException {
-        UserInputValidator.validateLogin(login);
-        UserInputValidator.validatePassword(password);
+    public void addUser(String login, String password) throws InvalidLoginException, InvalidPasswordException, InfraException {
+        new LoginInputValidator().validate(login);
+        new PasswordInputValidator().validate(password);
         User u = new User(login, password);
         users.put(login, u);
         persistence.saveUsers(users);
