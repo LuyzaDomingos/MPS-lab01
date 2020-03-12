@@ -49,9 +49,8 @@ public class UserPersistence implements UserPersistenceInterface, Serializable {
 
     @Override
     public Map<String, UserInterface> loadUser() throws InfraException {
-        
         if(!file.exists()){
-            throw new InfraException("Arquivo não encontrado");
+            return new HashMap<>();
         }
         
         try {
@@ -69,11 +68,9 @@ public class UserPersistence implements UserPersistenceInterface, Serializable {
 
     @Override
     public void saveUsers(Map<String, UserInterface> users) throws InfraException {
-
         try {
-
             writeUser = new FileOutputStream(file);
-            writeObj = new ObjectOutputStream(writeUser); 
+            writeObj = new ObjectOutputStream(writeUser);
             writeObj.writeObject(users);
             writeUser.close();
             writeObj.close();

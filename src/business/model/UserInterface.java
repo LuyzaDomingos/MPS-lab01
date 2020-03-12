@@ -5,11 +5,14 @@
  */
 package business.model;
 
+import java.io.Serializable;
+
 /**
  * Representa Usuários
+ * 
  * @author Victor Koehler
  */
-public interface UserInterface {
+public interface UserInterface extends Serializable {
     String getLogin();
 
     String getPassword();
