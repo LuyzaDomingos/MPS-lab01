@@ -5,14 +5,19 @@
  */
 package business.control;
 
+import infra.InfraException;
+import util.InvalidLoginException;
+import util.InvalidPasswordException;
+
 /**
  * Gerencia os Usuários
+ * 
  * @author Victor Koehler
  */
 public interface UserControlInterface {
-    void addUser(String login, String password);
+    void addUser(String login, String password) throws InvalidLoginException, InvalidPasswordException, InfraException;
 
-    void deleteUser(String login);
+    void deleteUser(String login) throws InfraException;
 
     business.model.UserInterface getUser(String login);
 }

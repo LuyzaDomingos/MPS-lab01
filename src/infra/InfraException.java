@@ -1,10 +1,16 @@
 package infra;
+
 /**
  *
- * @author aluno
+ * @author Luyza
  */
-public class InfraException extends Exception{
-    InfraException(String message){
+public class InfraException extends Exception {
+
+    public InfraException(String message) {
         super(message);
+    }
+
+    public InfraException(){
+        super("Erro na aplicação. Procure pelo o.....");
     }
 }
