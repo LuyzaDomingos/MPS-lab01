@@ -63,7 +63,7 @@ public class UserPersistence implements UserPersistenceInterface, Serializable {
             return users;
 
         } catch (IOException | ClassNotFoundException  ex) {
-            throw new InfraException("Não foi possível carregar os dados do usuário!");
+            throw new InfraException("Não foi possível carregar os dados do usuári devido "+ ex.getMessage());
         }
     }
 
@@ -79,7 +79,7 @@ public class UserPersistence implements UserPersistenceInterface, Serializable {
             writeObj.close();
 
         } catch (IOException ex) {
-            throw new InfraException("Não foi possível salvar o cadastro do usuário!");
+            throw new InfraException("Não foi possível salvar o cadastro do usuário devido" + ex.getMessage());
         }
     }
 
