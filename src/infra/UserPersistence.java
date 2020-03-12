@@ -49,26 +49,26 @@ public class UserPersistence implements UserPersistenceInterface, Serializable {
 
     @Override
     public Map<String, UserInterface> loadUser() throws InfraException {
+        if (!file.exists()) {
+            return new HashMap<>();
+        }
         try {
             readUser = new FileInputStream(file);
             readObj = new ObjectInputStream(readUser);
-            Map<String, UserInterface> users = (HashMap) readObj.readObject();
+            Map<String, UserInterface> users = (HashMap<String, UserInterface>) readObj.readObject();
             readUser.close();
             readObj.close();
             return users;
-
-        } catch (IOException ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             throw new InfraException("Não foi possível carregar o usuário!");
         }
     }
 
     @Override
     public void saveUsers(Map<String, UserInterface> users) throws InfraException {
-
         try {
-
             writeUser = new FileOutputStream(file);
-            writeObj = ObjectOutputStream(writeUser); // ##
+            writeObj = new ObjectOutputStream(writeUser); // ##
             writeObj.writeObject(users);
             writeUser.close();
             writeObj.close();
