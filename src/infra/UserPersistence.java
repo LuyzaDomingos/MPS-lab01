@@ -21,8 +21,8 @@ public class UserPersistence implements UserPersistenceInterface, Serializable {
     private FileInputStream readUser;
     private FileOutputStream writeUser;
 
-    private static ObjectInputStream readObj;
-    private static ObjectOutputStream writeObj;
+    private  ObjectInputStream readObj;
+    private  ObjectOutputStream writeObj;
 
     private File file;
 
@@ -49,16 +49,21 @@ public class UserPersistence implements UserPersistenceInterface, Serializable {
 
     @Override
     public Map<String, UserInterface> loadUser() throws InfraException {
+        
+        if(!file.exists()){
+            throw new InfraException("Arquivo não encontrado");
+        }
+        
         try {
             readUser = new FileInputStream(file);
             readObj = new ObjectInputStream(readUser);
-            Map<String, UserInterface> users = (HashMap) readObj.readObject();
+            Map<String, UserInterface> users = (HashMap<String,UserInterface>) readObj.readObject();
             readUser.close();
             readObj.close();
             return users;
 
-        } catch (IOException ex) {
-            throw new InfraException("Não foi possível carregar o usuário!");
+        } catch (IOException | ClassNotFoundException  ex) {
+            throw new InfraException("Não foi possível carregar os dados do usuário!");
         }
     }
 
@@ -68,13 +73,13 @@ public class UserPersistence implements UserPersistenceInterface, Serializable {
         try {
 
             writeUser = new FileOutputStream(file);
-            writeObj = ObjectOutputStream(writeUser); // ##
+            writeObj = new ObjectOutputStream(writeUser); 
             writeObj.writeObject(users);
             writeUser.close();
             writeObj.close();
 
         } catch (IOException ex) {
-            throw new InfraException("Não foi possível salvar o cadastro!");
+            throw new InfraException("Não foi possível salvar o cadastro do usuário!");
         }
     }
 
