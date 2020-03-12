@@ -5,13 +5,21 @@
  */
 package view;
 
+import infra.InfraException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author aluno
  */
 public class Main {
     public static void main(String[] args) {
-        var a = new business.control.UserControl();
+        try {
+            var a = new business.control.UserControl();
+        } catch (InfraException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         UserForm formulario = new UserForm();
         formulario.menu();
     }
