@@ -11,6 +11,6 @@ public class InfraException extends Exception {
     }
 
     public InfraException(){
-        super("Erro na aplicação. Procure pelo o.....");
+        super("Erro na aplicação.");
     }
 }

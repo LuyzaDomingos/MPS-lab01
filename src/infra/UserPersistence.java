@@ -21,8 +21,8 @@ public class UserPersistence implements UserPersistenceInterface, Serializable {
     private FileInputStream readUser;
     private FileOutputStream writeUser;
 
-    private static ObjectInputStream readObj;
-    private static ObjectOutputStream writeObj;
+    private  ObjectInputStream readObj;
+    private  ObjectOutputStream writeObj;
 
     private File file;
 
@@ -49,18 +49,20 @@ public class UserPersistence implements UserPersistenceInterface, Serializable {
 
     @Override
     public Map<String, UserInterface> loadUser() throws InfraException {
-        if (!file.exists()) {
+        if(!file.exists()){
             return new HashMap<>();
         }
+        
         try {
             readUser = new FileInputStream(file);
             readObj = new ObjectInputStream(readUser);
-            Map<String, UserInterface> users = (HashMap<String, UserInterface>) readObj.readObject();
+            Map<String, UserInterface> users = (HashMap<String,UserInterface>) readObj.readObject();
             readUser.close();
             readObj.close();
             return users;
-        } catch (IOException | ClassNotFoundException ex) {
-            throw new InfraException("Não foi possível carregar o usuário!");
+
+        } catch (IOException | ClassNotFoundException  ex) {
+            throw new InfraException("Não foi possível carregar os dados do usuári devido "+ ex.getMessage());
         }
     }
 
@@ -68,13 +70,13 @@ public class UserPersistence implements UserPersistenceInterface, Serializable {
     public void saveUsers(Map<String, UserInterface> users) throws InfraException {
         try {
             writeUser = new FileOutputStream(file);
-            writeObj = new ObjectOutputStream(writeUser); // ##
+            writeObj = new ObjectOutputStream(writeUser);
             writeObj.writeObject(users);
             writeUser.close();
             writeObj.close();
 
         } catch (IOException ex) {
-            throw new InfraException("Não foi possível salvar o cadastro!");
+            throw new InfraException("Não foi possível salvar o cadastro do usuário devido" + ex.getMessage());
         }
     }
 
