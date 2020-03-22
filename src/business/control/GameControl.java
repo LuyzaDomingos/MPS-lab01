@@ -1,6 +1,7 @@
 package business.control;
 
 import infra.InfraException;
+import java.util.Date;
 import util.InvalidLoginException;
 
 /**
@@ -14,11 +15,11 @@ public class GameControl {
         //
     }
 
-    public void addGame(String login, String password) throws InvalidLoginException, InfraException {
+    public void addGame(String login, String titulo, float preco, Date dataLancamento) throws InvalidLoginException, InfraException {
         //Um objeto login para ser validado e os atributos do Game para ser adicionado.
     }
 
-    public void deleteGame(String login, String GameTitulo) throws InfraException {
+    public void deleteGame(String login, String gameTitulo) throws InfraException {
         //No caso precisa de um objeto login para validar e o Game a ser removido.
     }
 
