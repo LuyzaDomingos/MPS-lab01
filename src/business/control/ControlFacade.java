@@ -1,6 +1,7 @@
 package business.control;
 
 import infra.InfraException;
+import java.util.Date;
 import util.InvalidLoginException;
 import util.InvalidPasswordException;
 
@@ -11,9 +12,11 @@ import util.InvalidPasswordException;
  */
 public class ControlFacade {
     private final UserControl userControl;
+    private final GameControl gameControl;
 
     public ControlFacade() throws InfraException {
         this.userControl = new UserControl();
+        this.gameControl = new GameControl();
     }
 
     public void addUser(String login, String password) throws InvalidLoginException, InvalidPasswordException, InfraException {
@@ -26,5 +29,13 @@ public class ControlFacade {
 
     public business.model.UserInterface getUser(String login) {
         return userControl.getUser(login);
+    }
+    
+    public void addGame(String login, String titulo, float preco, Date dataLancamento) throws InvalidLoginException, InfraException{
+        gameControl.addGame(login, titulo, preco, dataLancamento);
+    }
+    
+    public void deleteGame(String login, String gameTitulo) throws InfraException{
+        gameControl.deleteGame(login, gameTitulo);
     }
 }
