@@ -1,6 +1,6 @@
 package view;
 
-import infra.InfraException;
+import util.InfraException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

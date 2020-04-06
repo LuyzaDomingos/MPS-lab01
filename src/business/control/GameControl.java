@@ -1,6 +1,6 @@
 package business.control;
 
-import infra.InfraException;
+import util.InfraException;
 import java.util.Date;
 import util.InvalidLoginException;
 

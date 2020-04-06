@@ -1,4 +1,4 @@
-package infra;
+package util;
 
 /**
  *
@@ -12,5 +12,9 @@ public class InfraException extends Exception {
 
     public InfraException(){
         super("Erro na aplicação.");
+    }
+
+    public InfraException(String message, Throwable b) {
+        super(message, b);
     }
 }

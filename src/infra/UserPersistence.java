@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.io.Serializable;
+import util.InfraException;
 
 /**
  *

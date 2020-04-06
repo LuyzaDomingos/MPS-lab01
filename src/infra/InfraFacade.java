@@ -2,7 +2,7 @@ package infra;
 
 import business.model.UserInterface;
 import java.util.Map;
-import infra.InfraException;
+import util.InfraException;
 
 /**
  *Implementação do Padrão de Projeto Facade
