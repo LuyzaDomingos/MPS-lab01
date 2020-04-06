@@ -5,7 +5,7 @@
  */
 package business.control;
 
-import infra.InfraException;
+import util.InfraException;
 import util.InvalidLoginException;
 import util.InvalidPasswordException;
 

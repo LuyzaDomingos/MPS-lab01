@@ -1,12 +1,12 @@
 package view;
 
-import business.control.UserControl;
-import infra.InfraException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import business.control.UserControl;
 import util.BusinessValidationException;
+import util.InfraException;
 
 /**
  * @author Leandro

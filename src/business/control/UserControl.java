@@ -8,11 +8,11 @@ package business.control;
 import java.util.Map;
 import business.model.User;
 import business.model.UserInterface;
-import infra.InfraException;
 import infra.UserPersistence;
 import infra.UserPersistenceInterface;
 import util.InvalidLoginException;
 import util.InvalidPasswordException;
+import util.InfraException;
 
 /**
  * Gerencia os Usuários
