@@ -12,6 +12,8 @@ import util.BusinessValidationException;
  * @author Leandro
  */
 public class UserForm {
+    
+    Scanner ler = new Scanner(System.in);
 
     private void printOpcion(){
         System.out.println("Olá!\nO que deseja fazer?\n"
@@ -22,10 +24,19 @@ public class UserForm {
                          + "# 0-Sair do sistema.          #\n"
                          + "#------------+++++------------#");
     }
+    private String lerUsuario(){
+        System.out.print("Informe o nome do usuário: ");
+        String user = ler.next();  
+        return user;
+    }
+    private String lerSenha(){
+        System.out.print("Digite a senha: ");
+        String password = ler.next();  
+        return password;
+    }
     public void menu(){
         try {
             UserControl a = new business.control.UserControl();
-            Scanner ler = new Scanner(System.in);
             int entrada, opcao;
             String user;
             String password;
@@ -40,20 +51,29 @@ public class UserForm {
                     case 0:
                         break;
                     case 1:
-                        System.out.print("Informe o nome do usuário: ");
-                        user = ler.next();  
-                        System.out.println("Digite a senha: ");
-                        password = ler.next();
+                        user = lerUsuario();
+                        password = lerSenha();
                         try {
                             a.addUser(user, password);
-                            System.out.println("Usuário cadastrado com sucesso");
+                            System.out.println("Usuário: "+user+" cadastrado com sucesso");
                         }catch (BusinessValidationException | InfraException ex){
                             System.out.println(ex.getMessage());
                         }
                         break;
                     case 2:
+                        user = lerUsuario();
+                        password = lerSenha();
+//                        try {
+//                            a.addUser(user, password);
+//                            System.out.println("Usuário cadastrado com sucesso");
+//                        }catch (BusinessValidationException | InfraException ex){
+//                            System.out.println(ex.getMessage());
+//                        }
                         break;
                     case 3:
+                        user = lerUsuario();
+                        a.deleteUser(user);
+                        System.out.println("Usuário: "+user+" excluído com sucesso");
                         break;
                     default:
                         System.out.println("Opção inválida, encerrando o sistema.");
