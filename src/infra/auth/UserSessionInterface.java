@@ -1,6 +1,7 @@
-package business.model;
+package infra.auth;
 
 import java.time.LocalDateTime;
+import business.model.UserInterface;
 
 /**
  * Representa uma instância de Login
