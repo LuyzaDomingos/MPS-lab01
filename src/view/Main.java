@@ -1,15 +1,18 @@
 package view;
 
+import business.model.Relatorio;
 import infra.InfraException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  *
- * @author aluno
+ * @author leoPirpiri
  */
 public class Main {
     public static void main(String[] args) {
+//        Relatorio rl = new Relatorio();
+//        rl.gerarRelatorioFull();
         UserForm formulario = new UserForm();
         formulario.menu();
     }

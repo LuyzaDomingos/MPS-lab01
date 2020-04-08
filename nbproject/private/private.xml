@@ -3,17 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/infra/NewsPersistence.java</file>
-            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/business/control/ControlFacade.java</file>
-            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/business/control/UserControl.java</file>
+            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/business/model/RelatorioBase.java</file>
+            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/business/model/RelatorioGeral.java</file>
             <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/view/Main.java</file>
-            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/infra/GamePersistence.java</file>
-            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/infra/Factory.java</file>
-            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/infra/Persistence.java</file>
-            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/infra/UserPersistence.java</file>
+            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/business/model/Relatorio.java</file>
+            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/business/model/DecoracaoParte.java</file>
+            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/business/model/RelatorioNews.java</file>
+            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/business/model/RelatorioUser.java</file>
             <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/view/UserForm.java</file>
-            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/business/control/GameControl.java</file>
-            <file>file:/C:/Users/leogo/Documents/Projetos/MPS-lab01/src/infra/UserPersistenceInterface.java</file>
         </group>
     </open-files>
 </project-private>

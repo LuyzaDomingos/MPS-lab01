@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 import util.BusinessValidationException;
 
 /**
- * @author Leandro
+ * @author LeoPirpiri
  */
 public class UserForm {
     
@@ -49,6 +49,7 @@ public class UserForm {
                 }
                 switch(opcao){
                     case 0:
+                        System.out.println("Ok! Entendido... Encerrando o sistema\nAté breve!");
                         break;
                     case 1:
                         user = lerUsuario();
