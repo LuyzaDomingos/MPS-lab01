@@ -15,10 +15,25 @@ import util.InvalidPasswordException;
 public class ControlFacade {
     private final UserControl userControl;
     private final GameControl gameControl;
+    private static ControlFacade instance;
 
-    public ControlFacade() throws InfraException {
+    private ControlFacade() throws InfraException {
         this.userControl = new UserControl();
         this.gameControl = new GameControl();
+    }
+
+    public static synchronized ControlFacade getInstance() throws InfraException {
+        if (instance == null) {
+            instance = new ControlFacade();
+        }
+        return instance;
+    }
+
+    public static ControlFacade getInstanceOrDie() {
+        if (instance == null) {
+            throw new RuntimeException("ControlFacade not initialized.");
+        }
+        return instance;
     }
 
     public void addUser(String login, String password) throws InvalidLoginException, InvalidPasswordException, InfraException {
@@ -42,9 +57,6 @@ public class ControlFacade {
     }
 
     public UserSessionInterface authUser(String user, String password) throws AuthException {
-        if (!userControl.userExists(user)) {
-            throw new AuthException("Login especificado não pertence a nenhum usuário.");
-        }
         return infra.auth.SessionController.getInstance().tryAuth(getUser(user), password);
     }
 }

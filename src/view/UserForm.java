@@ -34,7 +34,7 @@ public class UserForm {
     }
     public void menu(){
         try {
-            ControlFacade a = new ControlFacade();
+            ControlFacade a = ControlFacade.getInstance();
             int opcao;
             String user;
             String password;
