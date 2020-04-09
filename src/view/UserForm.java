@@ -1,7 +1,7 @@
 package view;
 
 import business.control.ControlFacade;
-import infra.InfraException;
+import util.InfraException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import util.BusinessValidationException;

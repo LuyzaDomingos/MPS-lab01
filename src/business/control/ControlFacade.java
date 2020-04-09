@@ -2,7 +2,7 @@ package business.control;
 
 import java.util.Date;
 import infra.AuthLogger;
-import infra.InfraException;
+import util.InfraException;
 import business.model.UserSession;
 import util.AuthException;
 import util.InvalidLoginException;

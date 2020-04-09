@@ -2,7 +2,7 @@ package infra;
 
 import java.util.Map;
 import business.model.UserInterface;
-import infra.InfraException;
+import util.InfraException;
 
 /**
  *
