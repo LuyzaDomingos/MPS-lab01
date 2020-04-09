@@ -20,4 +20,6 @@ public interface UserControlInterface {
     void deleteUser(String login) throws InfraException;
 
     business.model.UserInterface getUser(String login);
+
+    boolean userExists(String login);
 }

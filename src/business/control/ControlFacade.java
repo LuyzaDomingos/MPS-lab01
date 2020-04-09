@@ -42,6 +42,9 @@ public class ControlFacade {
     }
 
     public UserSessionInterface authUser(String user, String password) throws AuthException {
+        if (!userControl.userExists(user)) {
+            throw new AuthException("Login especificado não pertence a nenhum usuário.");
+        }
         return infra.auth.SessionController.getInstance().tryAuth(getUser(user), password);
     }
 }

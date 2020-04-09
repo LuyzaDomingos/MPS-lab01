@@ -30,20 +30,31 @@ public class UserControl implements UserControlInterface {
         this.users = persistence.loadUser();
     }
 
+    @Override
     public void addUser(String login, String password) throws InvalidLoginException, InvalidPasswordException, InfraException {
         new LoginInputValidator().validate(login);
         new PasswordInputValidator().validate(password);
+        if (userExists(login)) {
+            throw new InvalidLoginException("Já existe um usuário com esse login.");
+        }
         User u = new User(login, password);
         users.put(login, u);
         persistence.saveUsers(users);
     }
 
+    @Override
     public void deleteUser(String login) throws InfraException {
         users.remove(login);
         persistence.saveUsers(users);
     }
 
+    @Override
     public business.model.UserInterface getUser(String login) {
         return users.get(login);
+    }
+
+    @Override
+    public boolean userExists(String login) {
+        return getUser(login) != null;
     }
 }
