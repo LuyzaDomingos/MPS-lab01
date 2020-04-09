@@ -7,21 +7,42 @@ import java.util.ArrayList;
  * @author luyza
  */
 public class NewsCaretaker {
-    protected ArrayList<NewsMemento> mementoStates;
+    private ArrayList<NewsMemento> mementoCategories = new ArrayList<>();
+    private ArrayList<NewsMemento> mementoContent = new ArrayList<>();
+    private ArrayList<NewsMemento> mementoTimeUpdated = new ArrayList<>();
     
-    public NewsCaretaker(){
-        mementoStates = new ArrayList<>();
+    
+    public void addMementoCategories(NewsMemento mementocategories){
+      mementoCategories.add(mementocategories);  
     }
     
-    public void addMemento(NewsMemento memento){
-      mementoStates.add(memento);  
+    public void addMementoContent(NewsMemento mementocontent){
+      mementoContent.add(mementocontent);  
     }
     
-    public NewsMemento getLastetStateSave(){
-        if(mementoStates.size()<=0){
+    public void addMementoTimeUpdated(NewsMemento mementotime){
+      mementoTimeUpdated.add(mementotime);  
+    }
+    
+    public NewsMemento getLastetSaveCategories(){
+        if(mementoCategories.size()<=0){
             return null;
         }
-        return mementoStates.remove(mementoStates.size()-1);
+        return mementoCategories.remove(mementoCategories.size()-1);
+    }
+    
+    public NewsMemento getLastetSaveContent(){
+        if(mementoContent.size()<=0){
+            return null;
+        }
+        return mementoContent.remove(mementoContent.size()-1);
+    }
+    
+    public NewsMemento getLastetSaveTime(){
+        if(mementoTimeUpdated.size()<=0){
+            return null;
+        }
+        return mementoTimeUpdated.remove(mementoTimeUpdated.size()-1);
     }
     
 }

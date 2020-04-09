@@ -1,5 +1,6 @@
 package business.model;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 /**
@@ -7,13 +8,34 @@ import java.util.Set;
  * @author luyza
  */
 public class NewsMemento {
-    protected Set<String> stateCategorie; // o estado é a categoria
     
-    public NewsMemento(Set<String> state){
-        stateCategorie = state;
+    private Set<String> stateCategories;
+    private String stateContent;
+    private LocalDateTime statetimeUpdated;
+    
+    public NewsMemento(Set<String> stateCategories){
+        this.stateCategories = stateCategories;
     }
     
-    public Set<String> getStateCategorieSave(){
-        return stateCategorie;
+    public NewsMemento(String stateContent){
+        this.stateContent = stateContent;
     }
+    
+    public NewsMemento(LocalDateTime statetimeUpdated){
+        this.statetimeUpdated = statetimeUpdated;
+    }
+    
+    public Set<String> getStateCategoriesSave(){
+        return stateCategories;
+    }
+    
+    public String getStateContentSave(){
+        return stateContent;
+    }
+    
+    public LocalDateTime getStateTimeUpdatedSave(){
+        return statetimeUpdated;
+    }
+    
+    
 }
