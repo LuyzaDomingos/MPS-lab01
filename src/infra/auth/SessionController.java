@@ -2,6 +2,10 @@ package infra.auth;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+import business.model.Relatorio;
 import business.model.UserInterface;
 import util.AuthException;
 
@@ -43,7 +47,7 @@ public class SessionController {
      * @return Uma instância de UserSessionInterface se o usuário e senha corresponderem ao registro.
      * @throws AuthException Emitida quando a senha do usuário 'user' não corresponder a 'password'.
      */
-    public UserSessionInterface tryAuth(UserInterface user, String password) throws AuthException {
+    public UserSessionInterface tryAuth(String user, String password) throws AuthException {
         UserSession us = new UserSession(user, password);
         log(us);
         if (!us.isValid())
@@ -57,5 +61,12 @@ public class SessionController {
 
     public List<UserSessionInterface> getSessionsLogs() {
         return history;
+    }
+
+    public Relatorio getFullReport() {
+        String relat = String.join("\n", getSessionsLogs().stream().map((i) -> {
+            return String.format("%s: LOGIN %s of %s", i.getEventTime(), i.isAuthenticated() ? "PASS" : "FAIL", i.getUserLogin());
+        }).collect(Collectors.toList()));
+        return new Relatorio(relat);
     }
 }

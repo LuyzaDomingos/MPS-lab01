@@ -47,6 +47,10 @@ public class ControlFacade {
     public business.model.UserInterface getUser(String login) {
         return userControl.getUser(login);
     }
+
+    public boolean userExists(String login) {
+        return userControl.userExists(login);
+    }
     
     public void addGame(String login, String titulo, float preco, Date dataLancamento) throws InvalidLoginException, InfraException{
         gameControl.addGame(login, titulo, preco, dataLancamento);
@@ -57,6 +61,6 @@ public class ControlFacade {
     }
 
     public UserSessionInterface authUser(String user, String password) throws AuthException {
-        return infra.auth.SessionController.getInstance().tryAuth(getUser(user), password);
+        return infra.auth.SessionController.getInstance().tryAuth(user, password);
     }
 }
