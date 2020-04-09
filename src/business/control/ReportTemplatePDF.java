@@ -1,4 +1,6 @@
-package business.model;
+package business.control;
+
+import business.control.ReportTemplate;
 
 /**
  *
