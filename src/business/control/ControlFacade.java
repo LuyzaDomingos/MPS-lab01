@@ -1,9 +1,8 @@
 package business.control;
 
 import java.util.Date;
-import infra.AuthLogger;
+import infra.auth.UserSessionInterface;
 import util.InfraException;
-import business.model.UserSession;
 import util.AuthException;
 import util.InvalidLoginException;
 import util.InvalidPasswordException;
@@ -42,11 +41,7 @@ public class ControlFacade {
         gameControl.deleteGame(login, gameTitulo);
     }
 
-    public business.model.UserSession authUser(String user, String password) throws AuthException {
-        UserSession us = new UserSession(getUser(user), password);
-        AuthLogger.getInstance().log(us);
-        if (!us.isValid())
-            throw new AuthException();
-        return us;
+    public UserSessionInterface authUser(String user, String password) throws AuthException {
+        return infra.auth.SessionController.getInstance().tryAuth(getUser(user), password);
     }
 }

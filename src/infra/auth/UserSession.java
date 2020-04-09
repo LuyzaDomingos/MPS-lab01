@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package business.model;
+package infra.auth;
 
 import java.time.LocalDateTime;
+
+import business.model.UserInterface;
 
 /**
  * Representa uma sessão.
@@ -17,7 +19,7 @@ public class UserSession implements UserSessionInterface {
     private final boolean valid;
     private boolean expired;
 
-    public UserSession(UserInterface user, String password) {
+    UserSession(UserInterface user, String password) {
         this.time = LocalDateTime.now();
         this.user = user;
         this.valid = password.equals(user.getPassword());

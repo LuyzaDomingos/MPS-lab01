@@ -1,4 +1,4 @@
-package business.control;
+package infra.auth;
 
 import util.InvalidLoginException;
 
