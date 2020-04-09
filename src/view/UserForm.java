@@ -1,11 +1,9 @@
 package view;
 
-import business.control.UserControl;
+import business.control.ControlFacade;
 import infra.InfraException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import util.BusinessValidationException;
 
 /**
@@ -36,8 +34,8 @@ public class UserForm {
     }
     public void menu(){
         try {
-            UserControl a = new business.control.UserControl();
-            int entrada, opcao;
+            ControlFacade a = new ControlFacade();
+            int opcao;
             String user;
             String password;
             do{
@@ -64,12 +62,12 @@ public class UserForm {
                     case 2:
                         user = lerUsuario();
                         password = lerSenha();
-//                        try {
-//                            a.addUser(user, password);
-//                            System.out.println("Usuário cadastrado com sucesso");
-//                        }catch (BusinessValidationException | InfraException ex){
-//                            System.out.println(ex.getMessage());
-//                        }
+                       try {
+                           a.authUser(user, password);
+                           System.out.println("Usuário autenticado com sucesso");
+                       }catch (BusinessValidationException ex){
+                           System.out.println(ex.getMessage());
+                       }
                         break;
                     case 3:
                         user = lerUsuario();
