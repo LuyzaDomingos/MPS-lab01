@@ -51,16 +51,15 @@ public class News implements NewsInterface {
     }
     
     public void outDatedCategories(){
-        categories = caretakerCategories.getLastetSaveCategories().getStateCategoriesSave();
+        categories = caretakerCategories.getLastetSaveState().getStateCategoriesSave();
     }
     
     public void outDatedContent(){
-        content = caretakerContent.getLastetSaveContent().getStateContentSave();
-                ;
+        content = caretakerContent.getLastetSaveState().getStateContentSave();
     }
     
     public void outDatedTime(){
-        timeUpdated = caretakerTime.getLastetSaveTime().getStateTimeUpdatedSave();
+        timeUpdated = caretakerTime.getLastetSaveState().getStateTimeUpdatedSave();
     }
     
 }
