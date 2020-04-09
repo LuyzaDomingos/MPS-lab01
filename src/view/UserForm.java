@@ -1,49 +1,84 @@
 package view;
 
+import business.control.ControlFacade;
+import util.InfraException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import business.control.UserControl;
 import util.BusinessValidationException;
-import util.InfraException;
 
 /**
- * @author Leandro
+ * @author LeoPirpiri
  */
 public class UserForm {
+    
+    Scanner ler = new Scanner(System.in);
 
+    private void printOpcion(){
+        System.out.println("Olá!\nO que deseja fazer?\n"
+                         + "#------------+++++------------#\n"
+                         + "# 1-Cadastrar Usuário.        #\n"
+                         + "# 2-Logar no sistema.         #\n"
+                         + "# 3-Excluir Usuário.          #\n"
+                         + "# 0-Sair do sistema.          #\n"
+                         + "#------------+++++------------#");
+    }
+    private String lerUsuario(){
+        System.out.print("Informe o nome do usuário: ");
+        String user = ler.next();  
+        return user;
+    }
+    private String lerSenha(){
+        System.out.print("Digite a senha: ");
+        String password = ler.next();  
+        return password;
+    }
     public void menu(){
         try {
-            UserControl a = new business.control.UserControl();
-            
-            Scanner ler = new Scanner(System.in);
-            int entrada;
+            ControlFacade a = new ControlFacade();
+            int opcao;
             String user;
             String password;
             do{
-                System.out.println("Olá!\n Digite o usuário: ");
-                user = ler.next();
-                System.out.println("Digite a senha: ");
-                password = ler.next();
+                this.printOpcion();
                 try {
-                    a.addUser(user, password);
-                }catch (BusinessValidationException | InfraException ex){
-                    System.out.println(ex.getMessage());
-                }
-                System.out.println("Deseja repetir? ([1-9]-Sim | 0-Não)");
-                try {
-                    entrada = ler.nextInt();
+                    opcao = ler.nextInt();
                 }catch(InputMismatchException ex){
-                    entrada = 0;
-                    System.out.println("Número inválido, encerrando o sistema.");
+                    opcao = -1;
                 }
-                if(entrada != 0){
-                    System.out.println("Entendido, Continuando...");
-                }else{
-                    System.out.println("Entendido, Bye!");
+                switch(opcao){
+                    case 0:
+                        System.out.println("Ok! Entendido... Encerrando o sistema\nAté breve!");
+                        break;
+                    case 1:
+                        user = lerUsuario();
+                        password = lerSenha();
+                        try {
+                            a.addUser(user, password);
+                            System.out.println("Usuário: "+user+" cadastrado com sucesso");
+                        }catch (BusinessValidationException | InfraException ex){
+                            System.out.println(ex.getMessage());
+                        }
+                        break;
+                    case 2:
+                        user = lerUsuario();
+                        password = lerSenha();
+                       try {
+                           a.authUser(user, password);
+                           System.out.println("Usuário autenticado com sucesso");
+                       }catch (BusinessValidationException ex){
+                           System.out.println(ex.getMessage());
+                       }
+                        break;
+                    case 3:
+                        user = lerUsuario();
+                        a.deleteUser(user);
+                        System.out.println("Usuário: "+user+" excluído com sucesso");
+                        break;
+                    default:
+                        System.out.println("Opção inválida, encerrando o sistema.");
+                        break;
                 }
-            }while(entrada!=0);
+            }while(opcao!=0);
         } catch (InfraException ex) {
                     System.out.println("Erro de abertura do sistema\n Contacte o"
                             + " serviço técnico\nAcionando o Circuit braker!");

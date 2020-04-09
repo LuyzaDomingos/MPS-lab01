@@ -17,7 +17,7 @@ import util.InfraException;
  * @author Luyza
  */
 
-public class UserPersistence implements UserPersistenceInterface, Serializable {
+public class UserPersistence extends Persistence implements UserPersistenceInterface, Serializable  {
 
     private FileInputStream readUser;
     private FileOutputStream writeUser;
