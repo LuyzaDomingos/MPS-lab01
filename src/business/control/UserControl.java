@@ -10,6 +10,8 @@ import business.model.User;
 import business.model.UserInterface;
 import infra.UserPersistence;
 import infra.UserPersistenceInterface;
+import infra.auth.LoginInputValidator;
+import infra.auth.PasswordInputValidator;
 import util.InvalidLoginException;
 import util.InvalidPasswordException;
 import util.InfraException;
