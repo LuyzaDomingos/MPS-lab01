@@ -12,8 +12,7 @@ public class RelatorioUser extends DecoracaoParte{
     }
     
     @Override
-    public void gerarRelatorio(){
-        relatorio.gerarRelatorio();
-        System.out.println("conteúdo adicional de relatório de User");
+    public String gerarRelatorio(){
+        return relatorio.gerarRelatorio() + "\nConteúdo adicional de relatório de User";
     }
 }

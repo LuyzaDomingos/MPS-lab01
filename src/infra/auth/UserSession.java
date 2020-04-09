@@ -7,6 +7,7 @@ package infra.auth;
 
 import java.time.LocalDateTime;
 
+import business.control.ControlFacade;
 import business.model.UserInterface;
 
 /**
@@ -14,20 +15,29 @@ import business.model.UserInterface;
  * @author Victor Koehler
  */
 public class UserSession implements UserSessionInterface {
-    protected final UserInterface user;
+    protected final String user;
     private final LocalDateTime time;
     private final boolean valid;
     private boolean expired;
 
-    UserSession(UserInterface user, String password) {
+    UserSession(String user, String password) {
         this.time = LocalDateTime.now();
         this.user = user;
-        this.valid = password.equals(user.getPassword());
+        if (ControlFacade.getInstanceOrDie().userExists(user)) {
+            this.valid = password.equals(ControlFacade.getInstanceOrDie().getUser(user).getPassword());
+        } else {
+            this.valid = false;
+        }
         this.expired = !this.valid;
     }
 
     @Override
     public UserInterface getUser() {
+        return ControlFacade.getInstanceOrDie().getUser(user);
+    }
+
+    @Override
+    public String getUserLogin() {
         return user;
     }
 

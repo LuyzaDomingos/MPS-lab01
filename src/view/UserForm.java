@@ -19,6 +19,7 @@ public class UserForm {
                          + "# 1-Cadastrar Usuário.        #\n"
                          + "# 2-Logar no sistema.         #\n"
                          + "# 3-Excluir Usuário.          #\n"
+                         + "# 4-Log de Acessos.           #\n"
                          + "# 0-Sair do sistema.          #\n"
                          + "#------------+++++------------#");
     }
@@ -34,7 +35,7 @@ public class UserForm {
     }
     public void menu(){
         try {
-            ControlFacade a = new ControlFacade();
+            ControlFacade a = ControlFacade.getInstance();
             int opcao;
             String user;
             String password;
@@ -74,6 +75,10 @@ public class UserForm {
                         a.deleteUser(user);
                         System.out.println("Usuário: "+user+" excluído com sucesso");
                         break;
+                    case 4:
+                        var relatorio = infra.auth.SessionController.getInstance().getFullReport();
+                        System.out.println(relatorio.gerarRelatorioFull());
+                       break;
                     default:
                         System.out.println("Opção inválida, encerrando o sistema.");
                         break;

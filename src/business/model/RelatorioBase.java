@@ -7,8 +7,12 @@ package business.model;
 public class RelatorioBase extends RelatorioGeral{
     private String conteudo;
     
+    public RelatorioBase(String conteudo) {
+        this.conteudo = conteudo;
+    }
+
     @Override
-    public void gerarRelatorio(){
-        System.out.println("Conteúdo Inicial, Relatório simplificado.");
+    public String gerarRelatorio(){
+        return conteudo;
     }
 }

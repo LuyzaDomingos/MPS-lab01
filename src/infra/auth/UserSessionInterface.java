@@ -17,6 +17,11 @@ public interface UserSessionInterface {
     UserInterface getUser();
 
     /**
+     * O Login do usuário correspondente.
+     */
+    String getUserLogin();
+
+    /**
      * Se a sessão ainda é válida.
      * Isto é, se não foi desconectada, expirada ou a autenticação falhou.
      * Encapsula isAuthenticated e isExpired.
