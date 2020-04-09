@@ -7,24 +7,24 @@ package business.model;
 public class Relatorio {
     private RelatorioGeral geral;
     
-    public Relatorio (){
-        geral = new RelatorioBase();
+    public Relatorio (String conteudo){
+        geral = new RelatorioBase(conteudo);
     }
     
-    public void gerarRelatorioSimples(){
-        geral.gerarRelatorio();
+    public String gerarRelatorioSimples(){
+        return geral.gerarRelatorio();
     }
-    public void gerarRelatorioCompletoUser(){
-        geral = new RelatorioUser(geral);
-        geral.gerarRelatorio();
+    public String gerarRelatorioCompletoUser(){
+        var a = new RelatorioUser(geral);
+        return a.gerarRelatorio();
     }
-    public void gerarRelatorioCompletoNews(){
-        geral = new RelatorioNews(geral);
-        geral.gerarRelatorio();
+    public String gerarRelatorioCompletoNews(){
+        var a = new RelatorioNews(geral);
+        return a.gerarRelatorio();
     }
-    public void gerarRelatorioFull(){
-        geral = new RelatorioUser(geral);
-        geral = new RelatorioNews(geral);
-        geral.gerarRelatorio();
+    public String gerarRelatorioFull(){
+        var a = new RelatorioUser(geral);
+        var b = new RelatorioNews(a);
+        return b.gerarRelatorio();
     }
 }
