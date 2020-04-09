@@ -9,12 +9,16 @@ public class News implements NewsInterface {
     private Set<String> categories;
     private String content;
     private LocalDateTime timePosted, timeUpdated;
+    private NewsCaretaker caretakerTotal;
+    
 
     public News(String content, Set<UserInterface> authors, Set<String> categories) {
         this.authors = authors;
         this.categories = categories;
         this.content = content;
         this.timePosted = this.timeUpdated = LocalDateTime.now();
+        this.caretakerTotal = new NewsCaretaker();
+          
     }
 
     @Override
@@ -40,6 +44,18 @@ public class News implements NewsInterface {
     @Override
     public LocalDateTime getUpdatedTime() {
         return timeUpdated;
+    }
+    
+    public void outDatedCategories(){
+        categories = caretakerTotal.getLastetSaveState().getStateCategoriesSave();
+    }
+    
+    public void outDatedContent(){
+        content = caretakerTotal.getLastetSaveState().getStateContentSave();
+    }
+    
+    public void outDatedTime(){
+        timeUpdated = caretakerTotal.getLastetSaveState().getStateTimeUpdatedSave();
     }
     
 }

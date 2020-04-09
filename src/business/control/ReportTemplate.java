@@ -1,4 +1,4 @@
-package business.model;
+package business.control;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
