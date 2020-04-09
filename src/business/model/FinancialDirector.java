@@ -1,7 +1,7 @@
 package business.model;
 
 /**
- * Construção de uma operação financieira.
+ * Construção de uma operação financeira.
  * @author luyza
  */
 public class FinancialDirector {

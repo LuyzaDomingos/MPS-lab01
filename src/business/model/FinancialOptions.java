@@ -4,7 +4,7 @@ package business.model;
  * Personalização de uma operação financeira.
  * @author luyza
  */
-public class FinancialList extends FinancialBuilder{
+public class FinancialOptions extends FinancialBuilder{
     
     @Override
     public void buildName(){
